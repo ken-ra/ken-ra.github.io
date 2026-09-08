@@ -1,0 +1,257 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: rgb(13, 13, 13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+img {
+  min-width: 35px;
+  aspect-ratio: inherit;
+  object-fit: fill;
+}
+button {
+  position: relative;
+  background-color: #7C3AED;
+  border-radius: 25%;
+  border: none;
+  aspect-ratio: 1;
+  padding: 10px 25px;
+  z-index: 5;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid rgba(196, 181, 253, 0.8);
+  border-radius: inherit;
+  animation: button-pulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px 2px white;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.bigFireworks {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+.smallFireworks {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 4;
+}
+.mediumFireworks {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+.hide{
+  display: none;
+}
+.particle-text {
+  border-radius: 50%;
+  width: 6px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  z-index: 3;
+  background-color: #fff;
+
+  box-shadow:
+    0 0 1px #fff,
+    0 0 4px #fff,
+    2px -2px 6px #ffe66d,
+    -2px 2px 8px #ff9f1c,
+    3px 3px 12px #ff006e,
+    -3px -3px 16px #8338ec,
+    0 0 30px #ff006e;
+
+  animation: shoot-particle 1.5s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+
+@keyframes shoot-particle {
+  0% {
+    bottom: 0;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    bottom: 50vh;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  90% {
+    bottom: 60vh;
+    opacity: 1;
+    transform: scale(0.9);
+  }
+
+  100% {
+    bottom: 65vh;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.particle-text::before {
+  content: "";
+  position: absolute;
+
+  width: 3px;
+  height: 80px;
+
+  left: 50%;
+  top: 100%;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    to top,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 230, 109, 0.5),
+    #fff
+  );
+
+  filter: blur(1px);
+
+  transform-origin: bottom;
+
+  animation: particle-trail 1.5s ease-out forwards;
+}
+
+@keyframes particle-trail {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  10% {
+    height: 30px;
+    opacity: 0.8;
+  }
+
+  50% {
+    height: 70px;
+    opacity: 0.6;
+  }
+
+  80% {
+    height: 90px;
+    opacity: 0.3;
+  }
+
+  100% {
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+.fireworks-text {
+  color: #fff;
+  font-family: "Pacifico", cursive;
+  font-size: 4rem;
+  opacity: 0;
+  letter-spacing: 0.2em;
+  position: absolute;
+  top: 150px;
+  left: 25%;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 4px #fff,
+    2px -2px 6px #ffe66d,
+    -2px 2px 8px #ff9f1c,
+    3px 3px 12px #ff006e,
+    -3px -3px 16px #8338ec,
+    0 0 30px #ff006e;
+
+  animation:
+    text-pop 4s ease-in 1.5s 1,
+    text-exit 2s ease-in-out 5.5s 1 forwards;
+}
+
+@keyframes text-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    filter: brightness(0.7);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+@keyframes text-exit {
+  0% {
+    transform: translateY(0) skewX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(20px) skewX(-5deg);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translateY(70px) skewX(-15deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(180px) skewX(-30deg);
+    opacity: 0;
+  }
+}
