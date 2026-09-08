@@ -204,8 +204,8 @@ button::before {
   opacity: 0;
   letter-spacing: 0.2em;
   position: absolute;
-  top: 150px;
-  left: 25%;
+  top: 25vh;
+  left: 35%;
   text-shadow:
     0 0 1px #fff,
     0 0 4px #fff,
